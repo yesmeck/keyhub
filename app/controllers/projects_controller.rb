@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :destroy, :invite_user, :add_user]
+  before_action :set_project, only: [:show, :destroy, :new_user, :add_user]
 
   def index
     @projects = current_user.projects
@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     redirect_via_turbolinks_to root_path
   end
 
-  def invite_user
+  def new_user
   end
 
   def add_user

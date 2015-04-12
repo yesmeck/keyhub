@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     member do
-      get :invite_user
+      get :new_user
       post :add_user
     end
 

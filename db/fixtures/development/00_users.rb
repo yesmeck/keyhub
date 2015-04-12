@@ -1,4 +1,4 @@
-User.seed do |s|
+User.seed(:username) do |s|
   s.username = 'amy'
   s.email = 'amy@keyhub.com'
   s.password  = 'amydontyougo'

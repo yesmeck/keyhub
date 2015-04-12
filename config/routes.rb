@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       post :add_user
     end
 
-    resources :server_groups
+    resources :server_groups do
+      member do
+        post :set_member
+      end
+    end
   end
 end

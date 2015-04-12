@@ -2,6 +2,21 @@
   <td><%= avatar_tag user, { size: 40 }, { class: 'circle' } %></td>
   <td><%= user.email %></td>
   <% @project.server_groups.each do |server_group| %>
-    <td><%= user.role_in(server_group) %></td>
+    <% current_role = user.role_in(server_group) %>
+    <% color = { 'root' => 'red', 'user' => 'green', 'none' => 'grey lighten-1' } %>
+    <td>
+      <a class='dropdown-button btn <%= color[current_role] %>' href='#' data-activates='<%= dom_id(user, dom_id(server_group)) %>-actions'><%= current_role %></a>
+      <!-- Dropdown Structure -->
+      <ul id='<%= dom_id(user, dom_id(server_group)) %>-actions' class='dropdown-content'>
+        <% ['root', 'user', 'none'].each do |role| %>
+          <% if role != current_role %>
+            <li>
+              <%= link_to role.upcase, set_member_project_server_group_path(@project, server_group, user_id: user.id, role: role),
+                method: :post, remote: true, class: "#{color[role]} white-text" %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </td>
   <% end %>
 </tr>

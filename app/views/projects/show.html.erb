@@ -21,9 +21,7 @@
         <tr>
           <th></th>
           <th></th>
-          <% @project.server_groups.each do |server_group| %>
-            <th><%= server_group.name %></th>
-          <% end %>
+          <%= render partial: 'server_group', collection: @project.server_groups %>
         </tr>
       </thead>
       <tbody>

@@ -1,0 +1,9 @@
+<th>
+  <a class='dropdown-button btn blue' href='#' data-activates='<%= dom_id(server_group) %>-actions'><%= server_group.name %></a>
+
+  <ul id='<%= dom_id(server_group) %>-actions' class='dropdown-content'>
+    <li>
+      <%= link_to 'Delete', project_server_group_path(@project, server_group), method: :delete, remote: true, class: 'red white-text' %>
+    </li>
+  </ul>
+</th>

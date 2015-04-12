@@ -1,0 +1,42 @@
+<div class="section">
+  <div class="row">
+    <%= form_for @user, class: 'col s12' do |f| %>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :username %>
+          <%= f.label :username %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :email %>
+          <%= f.label :email %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.select :preferred_shell, [['/bin/bash', '/bin/bash'], ['/bin/sh', '/bin/sh'] ] %>
+          <%= f.label :preferred_shell %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_area :ssh_public_key, class: 'materialize-textarea' %>
+          <%= f.label :ssh_public_key %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="action-field col s12">
+          <%= f.button class: 'btn waves-effect waves-light' do %>
+            Submit
+            <i class="mdi-content-send right"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

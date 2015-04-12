@@ -9,5 +9,7 @@ Rails.application.routes.draw do
       get :invite_user
       post :add_user
     end
+
+    resources :server_groups
   end
 end

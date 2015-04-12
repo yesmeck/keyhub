@@ -8,4 +8,4 @@
 
 $(document).on 'ready page:load', ->
   $('select').material_select()
-  $('.dropdown-button').dropdown()
+  $('.dropdown-button').dropdown(constrain_width: false)

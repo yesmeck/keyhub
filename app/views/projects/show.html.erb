@@ -4,9 +4,11 @@
   <!-- Dropdown Structure -->
   <ul id='project-actions' class='dropdown-content'>
     <li>
-      <%= link_to 'Invite user', invite_user_project_path %>
+      <%= link_to 'Invite User', invite_user_project_path %>
     </li>
-    <li><a href="#!">two</a></li>
+    <li>
+      <%= link_to 'New Server Group', new_project_server_group_path(@project) %>
+    </li>
     <li class="divider"></li>
     <li>
       <%= link_to 'Delete', project_path, method: :delete, remote: true, class: 'red white-text', data: { confirm: 'Are you sure delete this project?' } %>

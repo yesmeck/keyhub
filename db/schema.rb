@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412150357) do
+ActiveRecord::Schema.define(version: 20150412184103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,26 @@ ActiveRecord::Schema.define(version: 20150412150357) do
     t.integer "project_id"
     t.integer "user_id"
   end
+
+  create_table "server_group_members", force: :cascade do |t|
+    t.integer  "server_group_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "server_group_members", ["server_group_id"], name: "index_server_group_members_on_server_group_id", using: :btree
+  add_index "server_group_members", ["user_id"], name: "index_server_group_members_on_user_id", using: :btree
+
+  create_table "server_groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "server_groups", ["project_id"], name: "index_server_groups_on_project_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                       null: false
@@ -42,4 +62,7 @@ ActiveRecord::Schema.define(version: 20150412150357) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "server_group_members", "server_groups"
+  add_foreign_key "server_group_members", "users"
+  add_foreign_key "server_groups", "projects"
 end

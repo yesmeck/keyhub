@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server_grou_id: 
+  user_id: 
+  role: MyString
+
+two:
+  server_grou_id: 
+  user_id: 
+  role: MyString

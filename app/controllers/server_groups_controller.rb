@@ -1,5 +1,5 @@
 class ServerGroupsController < ApplicationController
-  before_action :require_login, :set_project
+  before_action :set_project
 
   def new
     @server_group = ServerGroup.new

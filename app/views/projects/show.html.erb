@@ -1,32 +1,34 @@
 <div class="section">
-  <a class='dropdown-button btn' href='#' data-activates='project-actions'><%= @project.name %></a>
+  <div class="row">
+    <a class='dropdown-button btn' href='#' data-activates='project-actions'><%= @project.name %></a>
 
-  <!-- Dropdown Structure -->
-  <ul id='project-actions' class='dropdown-content'>
-    <li>
-      <%= link_to 'Invite User', invite_user_project_path %>
-    </li>
-    <li>
-      <%= link_to 'New Server Group', new_project_server_group_path(@project) %>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <%= link_to 'Delete', project_path, method: :delete, remote: true, class: 'red white-text', data: { confirm: 'Are you sure delete this project?' } %>
-    </li>
-  </ul>
+    <!-- Dropdown Structure -->
+    <ul id='project-actions' class='dropdown-content'>
+      <li>
+        <%= link_to 'Invite User', invite_user_project_path %>
+      </li>
+      <li>
+        <%= link_to 'New Server Group', new_project_server_group_path(@project) %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to 'Delete', project_path, method: :delete, remote: true, class: 'red white-text', data: { confirm: 'Are you sure delete this project?' } %>
+      </li>
+    </ul>
 
-  <table class="bordered striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <% @project.server_groups.each do |server_group| %>
-          <th><%= server_group.name %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: 'user', collection: @users %>
-    </tbody>
-  </table>
+    <table class="bordered striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <% @project.server_groups.each do |server_group| %>
+            <th><%= server_group.name %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'user', collection: @users %>
+      </tbody>
+    </table>
+  </div>
 </div>

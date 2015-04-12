@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'projects#index'
 
   resources :users
   get :profile, to: 'users#profile'

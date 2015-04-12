@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  before_action :require_login
   before_action :set_project, only: [:show, :destroy, :invite_user, :add_user]
 
   def index
@@ -17,7 +16,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy!
 
-    redirect_via_turbolinks_to projects_path
+    redirect_via_turbolinks_to root_path
   end
 
   def invite_user

@@ -1,8 +1,7 @@
-<li class="collection-item avatar">
-  <%= avatar_tag user, { size: 40 }, { class: 'circle' } %>
-  <span class="username"><%= user.username %></span>
-  <p>
-    <%= user.email %>
-  </p>
-</li>
-
+<tr>
+  <td><%= avatar_tag user, { size: 40 }, { class: 'circle' } %></td>
+  <td><%= user.email %></td>
+  <% @project.server_groups.each do |server_group| %>
+    <td><%= user.role_in(server_group) %></td>
+  <% end %>
+</tr>

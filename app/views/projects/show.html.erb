@@ -15,7 +15,18 @@
     </li>
   </ul>
 
-  <ul class="collection">
-    <%= render partial: 'user', collection: @users %>
-  </ul>
+  <table class="bordered striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <% @project.server_groups.each do |server_group| %>
+          <th><%= server_group.name %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'user', collection: @users %>
+    </tbody>
+  </table>
 </div>

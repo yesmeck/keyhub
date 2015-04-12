@@ -21,6 +21,9 @@ gem 'nprogress-rails'
 # Seed
 gem 'seed-fu'
 
+# Gavatar
+gem 'avatar', require: 'avatar/view/action_view_support'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

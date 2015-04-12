@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   resources :users
   get :profile, to: 'users#profile'
 
-  resources :projects
+  resources :projects do
+    member do
+      get :invite_user
+      post :add_user
+    end
+  end
 end

@@ -1,6 +1,6 @@
-User.seed(:username) do |s|
-  s.username = 'amy'
-  s.email = 'amy@keyhub.com'
-  s.password  = 'amydontyougo'
-  s.preferred_shell = '/bin/bash'
-end
+users = [
+  { username: 'meck', email: 'meck@keyhub.com', password: 'password', preferred_shell: '/bin/bash' },
+  { username: 'ava', email: 'ava@keyhub.com', password: 'password', preferred_shell: '/bin/bash' },
+  { username: 'amy', email: 'amy@keyhub.com', password: 'password', preferred_shell: '/bin/bash' },
+]
+User.seed(:username, *users)

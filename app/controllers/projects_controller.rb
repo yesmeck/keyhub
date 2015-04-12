@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
   before_action :require_login
-  before_action :set_project, only: [:show, :destroy]
+  before_action :set_project, only: [:show, :destroy, :invite_user, :add_user]
 
   def index
     @projects = current_user.projects
   end
 
   def show
+    @users = @project.users
   end
 
   def create
@@ -17,6 +18,16 @@ class ProjectsController < ApplicationController
     @project.destroy!
 
     redirect_via_turbolinks_to projects_path
+  end
+
+  def invite_user
+  end
+
+  def add_user
+    @user = User.find_by!(email: params[:email])
+    @project.users << @user
+
+    redirect_via_turbolinks_to project_path
   end
 
   private

@@ -3,6 +3,9 @@
 
   <ul id='<%= dom_id(server_group) %>-actions' class='dropdown-content'>
     <li>
+      <%= link_to 'Shell', deploy_project_server_group_path(@project, server_group), class: 'green white-text' %>
+    </li>
+    <li>
       <%= link_to 'Delete', project_server_group_path(@project, server_group), method: :delete, remote: true, class: 'red white-text' %>
     </li>
   </ul>

@@ -24,6 +24,10 @@ gem 'seed-fu'
 # Gavatar
 gem 'avatar', require: 'avatar/view/action_view_support'
 
+group :development do
+  gem 'quiet_assets'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

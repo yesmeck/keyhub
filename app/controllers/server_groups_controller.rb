@@ -1,6 +1,7 @@
 class ServerGroupsController < ApplicationController
-  before_action :set_project
-  before_action :set_server_group, only: [:destroy, :set_member, :remove_member]
+  before_action :set_project, except: :configure
+  before_action :set_server_group, only: [:destroy, :set_member, :remove_member, :deploy]
+  skip_before_action :require_login, only: :configure
 
   def new
     @server_group = ServerGroup.new
@@ -31,6 +32,16 @@ class ServerGroupsController < ApplicationController
     member && member.destroy!
 
     redirect_via_turbolinks_to project_path(@project)
+  end
+
+  def deploy
+
+  end
+
+  def configure
+    api_key = request.headers['Authorization'].split(' ').last
+    @server_group = ServerGroup.find_by_api_key!(api_key)
+    @members = @server_group.server_group_members.where.not(role: 'none')
   end
 
   private

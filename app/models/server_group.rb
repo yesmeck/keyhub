@@ -1,3 +1,5 @@
+require "base64"
+
 class ServerGroup < ActiveRecord::Base
   belongs_to :project
 

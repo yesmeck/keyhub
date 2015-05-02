@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   get :profile, to: 'users#profile'
+  get :configure, to: 'server_groups#configure'
 
   resources :projects do
     member do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
     resources :server_groups do
       member do
         post :set_member
+        get :deploy
       end
     end
   end
